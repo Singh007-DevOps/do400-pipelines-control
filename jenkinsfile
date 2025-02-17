@@ -11,22 +11,29 @@ pipeline {
     }
 
     stages {
+        stage('Run Tests') {
 
-        stage('Backend Tests') {
+            parallel {
 
-            steps {
+                stage('Backend Tests') {
 
-                sh 'node ./backend/test.js'
+                    steps {
 
-            }
+                        sh 'node ./backend/test.js'
 
-        }
+                    }
 
-        stage('Frontend Tests') {
+                }
 
-            steps {
+                stage('Frontend Tests') {
 
-                sh 'node ./frontend/test.js'
+                    steps {
+
+                        sh 'node ./frontend/test.js'
+
+                    }
+
+                }
 
             }
 
